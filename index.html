@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jewellery Try-On</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Jewellery Try-On</h1>
+    <nav>
+      <button id="tab-live" class="tab active">Live Try-On</button>
+      <button id="tab-avatar" class="tab">Avatar Face-Swap</button>
+    </nav>
+  </header>
+
+  <!-- LIVE TRY-ON -->
+  <section id="live-section">
+    <div id="camera-container">
+      <video id="videoElement" autoplay playsinline></video>
+      <img id="necklaceOverlay" src="jewelry/necklace1.png" alt="necklace"/>
+    </div>
+
+    <div class="controls">
+      <button id="btn-capture" class="primary">📸 Capture & Download</button>
+      <button id="btn-full" class="ghost">🔍 Full View</button>
+    </div>
+
+    <div id="catalog">
+      <h3>Choose a Necklace</h3>
+      <div class="items">
+        <button class="item"><img src="jewelry/necklace1.png" data-src="jewelry/necklace1.png"/></button>
+        <button class="item"><img src="jewelry/necklace2.png" data-src="jewelry/necklace2.png"/></button>
+        <button class="item"><img src="jewelry/necklace3.png" data-src="jewelry/necklace3.png"/></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVATAR FACE-SWAP -->
+  <section id="avatar-section" class="hidden">
+    <div class="uploader">
+      <label class="file">
+        <input type="file" accept="image/*" id="selfie-input"/>
+        <span>Upload Selfie</span>
+      </label>
+      <select id="avatar-select"></select>
+      <button id="btn-swap" class="primary">⚡ Face-Swap</button>
+    </div>
+    <div class="preview">
+      <img id="swap-output" alt="Result will appear here"/>
+    </div>
+    <p class="note">Privacy: server keeps only the last <b>3</b> results. Older files are auto-deleted.</p>
+  </section>
+
+  <canvas id="hiddenCanvas"></canvas>
+
+  <!-- MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
